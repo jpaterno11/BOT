@@ -1,8 +1,7 @@
 // Gestión de estudiantes
 import { readFileSync, writeFileSync } from 'fs';
 
-
-const DATA_FILE = './data/alumnos.json';
+const DATA_FILE = './backend/data/alumnos.json';
 
 
 class Estudiantes {

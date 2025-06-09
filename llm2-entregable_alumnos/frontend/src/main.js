@@ -1,7 +1,6 @@
 import { tool, agent } from "llamaindex";
 import { Ollama } from "@llamaindex/ollama";
 import { z } from "zod";
-import { empezarChat } from "./lib/cli-chat.js";
 import { Estudiantes } from "./lib/estudiantes.js";
 
 // Configuración
@@ -26,8 +25,8 @@ Respondé de forma clara y breve. Si el alumno ya existe no lo vuelvas a agregar
 
 const ollamaLLM = new Ollama({
     model: "qwen3:1.7b",
-    temperature: 0.75,
-    timeout: 2 * 120 * 1000, // Timeout de 2 minutos
+    temperature: 0.05,
+    timeout: 2 * 60 * 1000, // Timeout de 2 minutos
 });
 
 
@@ -89,16 +88,5 @@ const elAgente = agent({
     systemPrompt: systemPrompt,
 });
 
-// Mensaje de bienvenida
-const mensajeBienvenida = `
-¡Hola! Soy tu asistente para gestionar estudiantes.
-Puedo ayudarte a:
-- Buscar estudiantes por nombre o apellido
-- Agregar nuevos estudiantes
-- Mostrar la lista completa de estudiantes
 
-¿Qué necesitás?
-`;
-
-// Iniciar el chat
-empezarChat(elAgente, mensajeBienvenida);
+export default elAgente;
