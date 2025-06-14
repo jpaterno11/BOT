@@ -1,69 +1,70 @@
-# Entregable: Sistema de Gestión de Estudiantes con LLM Tools
 
-Este proyecto es un entregable para implementar un sistema de gestión de estudiantes utilizando LLMs (Large Language Models) y Tools.
+# BOT - Proyecto Asistente Conversacional
 
-## 📚 Requisitos Previos
+Este proyecto es un asistente conversacional con frontend en **React + Vite** y backend en **Node.js + Express**.
 
-- Node.js >= 18
-- [Ollama](https://ollama.com/) instalado y corriendo
-- Modelo qwen3:1.7b instalado
+---
 
-## 🛠 Instalación
+## 📂 Estructura del proyecto
 
-1. Instala las dependencias:
+```
+
+/llm2-entregable\_alumnos
+├── frontend/      → Aplicación React
+├── backend/       → API Node/Express
+
+````
+
+---
+
+## 🚀 Cómo correr el proyecto
+
+### ✅ 1. Clonar el repositorio
 ```bash
+git clone https://github.com/tu_usuario/tu_repo.git
+cd llm2-entregable_alumnos
 npm install
-```
+npm i cors
+npm i express
+````
 
-2. Asegúrate de tener Ollama corriendo y el modelo instalado:
-```bash
-ollama run qwen3:1.7b
-```
+---
 
-## 🎯 Tu Tarea
+## ▶️ 2. Correr el Frontend (React + Vite)
 
-Debes implementar las siguientes funcionalidades:
-
-1. En `src/lib/estudiantes.js`:
-   - Método `agregarEstudiante(nombre, apellido, curso)`
-   - Método `buscarEstudiantePorNombre(nombre)`
-   - Método `buscarEstudiantePorApellido(apellido)`
-   - Método `listarEstudiantes()`
-
-2. En `src/ejemplo-alumnos-tools.js`:
-   - Tool `buscarPorNombre`
-   - Tool `buscarPorApellido`
-   - Tool `agregarEstudiante`
-   - Tool `listarEstudiantes`
-
-## 💡 Ayuda
-
-- Cada método y Tool tiene comentarios TODO indicando dónde implementar el código
-- Revisa la documentación de llamaindex para entender cómo funcionan las Tools
-- Utiliza la clase `Estudiantes` para manejar los datos
-- Las Tools deben usar los métodos de la clase `Estudiantes`
-
-## 🚀 Para Ejecutar
 
 ```bash
-npm start
+npm run dev
 ```
 
-## 📝 Notas
+Luego accedé en tu navegador a: [http://localhost:5173](http://localhost:5173)
 
-- El código base ya incluye:
-  - Interfaz CLI funcional
-  - Formateo de respuestas
-  - Manejo básico de archivos
-  - Estructura del proyecto
+---
 
-- No modifiques:
-  - La estructura de los archivos
-  - Los nombres de los métodos/Tools
-  - Los parámetros definidos
+## ▶️ 3. Correr el Backend (Node.js + Express)
 
-## 📚 Recursos
 
-- [Documentación de LlamaIndex](https://docs.llamaindex.ai/)
-- [Documentación de Zod](https://zod.dev/)
-- [Ejemplos de Tools](https://docs.llamaindex.ai/en/stable/examples/tools/)
+```bash
+npm run start
+```
+
+Servidor backend por defecto en: [http://localhost:3000](http://localhost:3000)
+
+---
+## 📚 Funcionalidades implementadas
+
+* ✅ Selector de herramientas (Tools)
+* ✅ Historial persistente en `localStorage`
+* ✅ Personalización con nombre/avatar
+* ✅ Selector de modelo y temperatura
+* ✅ Soporte para Markdown en respuestas
+* ✅ Tests básicos con Jest/Supertest
+
+---
+
+## 🛠️ Scripts útiles
+
+| Comando       | Ubicación   | Descripción                    |
+| ------------- | ----------- | ------------------------------ |
+| `npm run dev` | `frontend/` | Levanta el frontend con Vite   |
+| `npm start`   | `backend/`  | Levanta el backend (Express)   |
