@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import runAgent from './agent.js';
+import runAgent from '../frontend/agent.js';
 
 const app = express();
 const port = 3000;
@@ -38,3 +38,4 @@ app.post('/api/chat', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
+

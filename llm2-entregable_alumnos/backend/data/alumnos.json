@@ -34,6 +34,11 @@
       "nombre": "Aaron",
       "apellido": "Selener",
       "curso": "5IA"
+    },
+    {
+      "nombre": "Manuel",
+      "apellido": "Mendez",
+      "curso": "3C"
     }
   ]
 }
