@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Chat from './components/Chat.jsx';
 import { sendMessage } from './api';
+import './css/App.css'
 
 function App() {
   const [messages, setMessages] = useState(() => {
@@ -51,25 +52,28 @@ function App() {
 
   return (
     <>
-      <div style={{ padding: "1rem" }}>
-        <h1>Chat con {assistantAvatar} {assistantName}</h1>
+    <div className="app-container">
+      <h1 className="app-title">Chat con 🤖 Asistente GPT</h1>
 
-        {/* Controles */}
-        <div style={{ marginBottom: "1rem" }}>
-          <label>Tool: </label>
-          <select value={tool} onChange={(e) => setTool(e.target.value)}>
+      <div className="controls">
+        <div>
+          <label>Tool:</label>
+          <select value={tool} onChange={(e) => setTool(e.target.value)} className="select-style">
             <option value="default">Default</option>
-            <option value="math">Math Tool</option>
-            <option value="code">Code Tool</option>
+            <option value="alumnos">Alumnos Tool</option>
           </select>
+        </div>
 
-          <label style={{ marginLeft: "1rem" }}>Modelo: </label>
-          <select value={model} onChange={(e) => setModel(e.target.value)}>
+        <div>
+          <label>Modelo:</label>
+          <select value={model} onChange={(e) => setModel(e.target.value)} className="select-style">
             <option value="gpt-3.5">GPT-3.5</option>
             <option value="gpt-4">GPT-4</option>
           </select>
+        </div>
 
-          <label style={{ marginLeft: "1rem" }}>Temperatura: </label>
+        <div>
+          <label>Temperatura:</label>
           <input
             type="range"
             min="0"
@@ -80,26 +84,25 @@ function App() {
           />
           <span style={{ marginLeft: "0.5rem" }}>{temperature}</span>
         </div>
-
-        {/* Chat */}
-        <Chat messages={messages} assistantName={assistantName} assistantAvatar={assistantAvatar} />
-
-        {/* Entrada de texto */}
-        <div style={{ marginTop: "1rem" }}>
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Escribí una pregunta..."
-            style={{ width: "80%", padding: "0.5rem" }}
-          />
-          <button onClick={handleSend} disabled={loading} style={{ marginLeft: "1rem" }}>
-            {loading ? 'Pensando...' : 'Enviar'}
-          </button>
-        </div>
       </div>
+
+      <Chat messages={messages} assistantName={assistantName} assistantAvatar={assistantAvatar} />
+
+      <div className="input-container">
+        <input
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Escribí una pregunta..."
+        />
+        <button onClick={handleSend} disabled={loading}>
+          {loading ? 'Pensando...' : 'Enviar'}
+        </button>
+      </div>
+    </div>
     </>
   );
 }
+
 
 export default App;

@@ -8,6 +8,24 @@ const port = 3000;
 app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
 app.use(express.json());
 
+
+let modelTemperature = 0.5; // Default temperature
+
+app.post('/update-temperature', (req, res) => {
+  const { temperature } = req.body;
+
+  // Validate the temperature value
+  if (temperature !== undefined && typeof temperature === 'number') {
+    modelTemperature = temperature; // Update the model's temperature
+    console.log(`Model temperature updated to: ${modelTemperature}`);
+    
+    // Respond to the frontend
+    res.status(200).send({ message: 'Temperature updated successfully', temperature: modelTemperature });
+  } else {
+    res.status(400).send({ message: 'Invalid temperature value' });
+  }
+});
+
 app.post('/api/chat', async (req, res) => {
   const { message } = req.body;
   try {
